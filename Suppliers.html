@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Suppliers</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+<div class="flex flex-col md:flex-row">
+
+  <!-- SIDEBAR -->
+  <div class="w-full md:w-64 bg-green-600 text-white p-5 min-h-screen">
+
+    <h1 class="text-3xl font-bold mb-10">
+      Grocery Shop
+    </h1>
+
+    <ul class="space-y-4">
+
+      <a href="./index.html">
+        <li class="bg-green-700 p-4 rounded-xl">
+          Dashboard
+        </li>
+      </a>
+
+      <a href="./inventory.html">
+        <li class="bg-green-700 p-4 rounded-xl">
+          Inventory
+        </li>
+      </a>
+
+      <a href="./suppliers.html">
+        <li class="bg-green-800 p-4 rounded-xl">
+          Suppliers
+        </li>
+      </a>
+
+    </ul>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="flex-1 p-6">
+
+    <h1 class="text-3xl font-bold mb-6">
+      Suppliers Management
+    </h1>
+
+    <!-- FORM -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+      <input id="supplierName"
+        class="p-2 border rounded"
+        placeholder="Supplier Name">
+
+      <input id="company"
+        class="p-2 border rounded"
+        placeholder="Company Name">
+
+      <input id="phone"
+        class="p-2 border rounded"
+        placeholder="Phone Number">
+
+      <input id="email"
+        class="p-2 border rounded"
+        placeholder="Email">
+
+      <input id="products"
+        class="p-2 border rounded"
+        placeholder="Products Supplied">
+
+      <input id="gst"
+        class="p-2 border rounded"
+        placeholder="GST Number">
+
+    </div>
+
+    <!-- BUTTON -->
+    <button onclick="addSupplier()"
+      class="bg-green-600 text-white px-6 py-2 rounded mt-5 hover:bg-green-700">
+
+      Add Supplier
+
+    </button>
+
+    <!-- TABLE -->
+    <div class="overflow-x-auto mt-8">
+
+      <table class="w-full bg-white border">
+
+        <thead class="bg-green-700 text-white">
+
+          <tr>
+
+            <th class="p-3">S.No</th>
+            <th>Supplier</th>
+            <th>Company</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Products</th>
+            <th>GST</th>
+            <th>Action</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="supplierTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+let suppliers =
+  JSON.parse(localStorage.getItem("suppliers")) || [];
+
+// SAVE DATA
+function saveSupplierData() {
+
+  localStorage.setItem(
+    "suppliers",
+    JSON.stringify(suppliers)
+  );
+}
+
+// ADD SUPPLIER
+function addSupplier() {
+
+  let supplierName =
+    document.getElementById("supplierName").value;
+
+  let company =
+    document.getElementById("company").value;
+
+  let phone =
+    document.getElementById("phone").value;
+
+  let email =
+    document.getElementById("email").value;
+
+  let products =
+    document.getElementById("products").value;
+
+  let gst =
+    document.getElementById("gst").value;
+
+  if (
+    !supplierName ||
+    !company ||
+    !phone
+  ) {
+
+    alert("Please fill required fields");
+
+    return;
+  }
+
+  suppliers.push({
+
+    supplierName,
+    company,
+    phone,
+    email,
+    products,
+    gst
+
+  });
+
+  saveSupplierData();
+
+  renderSuppliers();
+
+  // CLEAR FORM
+  document.querySelectorAll("input")
+    .forEach(input => input.value = "");
+}
+
+// DISPLAY TABLE
+function renderSuppliers() {
+
+  let table =
+    document.getElementById("supplierTable");
+
+  table.innerHTML = "";
+
+  suppliers.forEach((s, index) => {
+
+    table.innerHTML += `
+
+      <tr class="text-center border-b">
+
+        <td class="p-3">${index + 1}</td>
+
+        <td>${s.supplierName}</td>
+
+        <td>${s.company}</td>
+
+        <td>${s.phone}</td>
+
+        <td>${s.email}</td>
+
+        <td>${s.products}</td>
+
+        <td>${s.gst}</td>
+
+        <td>
+
+          <button
+            onclick="deleteSupplier(${index})"
+            class="bg-red-500 text-white px-3 py-1 rounded">
+
+            Delete
+
+          </button>
+
+        </td>
+
+      </tr>
+    `;
+  });
+}
+
+// DELETE
+function deleteSupplier(index) {
+
+  suppliers.splice(index, 1);
+
+  saveSupplierData();
+
+  renderSuppliers();
+}
+
+// AUTO LOAD
+window.onload = function () {
+
+  renderSuppliers();
+};
+
+</script>
+
+</body>
+</html>

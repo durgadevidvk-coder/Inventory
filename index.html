@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Assets/css/Style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      
+
+</head>
+<body>
+
+  <div class="flex flex-col md:flex-row">
+
+  <!-- Sidebar -->
+  <div class="w-full md:w-64 bg-green-600 text-white p-5 min-h-screen">
+
+    <h1 class="text-3xl font-bold mb-10 text-center md:text-left"> Grocery ShoP</h1>
+
+    <ul class="space-y-4">
+
+      <a href="./index.html"><li class="bg-green-800 p-4 rounded-xl hover:bg-green-900 cursor-pointer">Dashboard</li></a>
+
+      <a href="./inventory.html"><li class="bg-green-700 p-4 rounded-xl hover:bg-green-800 cursor-pointer mt-5">Inventory</li></a>
+
+      <a href="./expiry.html"><li class="bg-green-700 p-4 rounded-xl hover:bg-green-800 cursor-pointer mt-5">Expiry Management</li></a></ul>
+
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-4 md:p-6">
+
+    <!-- Heading -->
+    <h1 class="text-2xl md:text-3xl font-bold mb-6">Grocery Inventory Dashboard</h1>
+
+    <!-- Dashboard Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+
+      <!-- Total Products -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg">
+        <h2 id="totalProducts" class="text-3xl font-bold text-green-600">0</h2>
+      <p class="text-lg font-semibold mt-2">Total Products</p>
+      </div>
+
+      <!-- Low Stock -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg">
+        <h2 id="lowStock"class="text-3xl font-bold text-red-500">0</h2>
+       <p class="text-lg font-semibold mt-2">Low Stock</p>
+      </div>
+
+      <!-- Total Quantity -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg">
+        <h2 id="totalQty" class="text-3xl font-bold text-blue-500">0</h2>
+        <p class="text-lg font-semibold mt-2">Total Quantity</p>
+    </div>
+
+      <!-- Total Sales -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg">
+         <h2 id="totalValue" class="text-3xl font-bold text-yellow-500">₹0</h2>
+        <p class="text-lg font-semibold mt-2">Total Sales</p>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
+      <h2 class="text-xl font-bold mb-4">Inventory Overview</h2>
+
+      <div class="w-full md:w-[400px] mx-auto">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./Assets/js/script.js"></script>
+    
+</body>
+</html>

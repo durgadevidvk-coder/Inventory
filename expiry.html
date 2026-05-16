@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="flex flex-col md:flex-row">
+
+  <!-- Sidebar -->
+  <div class="w-full md:w-64 bg-green-600 text-white p-5 min-h-screen">
+
+    <h1 class="text-3xl font-bold mb-10 text-center md:text-left">Grocery Shop</h1>
+
+    <ul class="space-y-4">
+
+      <!-- Dashboard -->
+      <a href="./index.html"><li class="bg-green-700 p-4 rounded-xl hover:bg-green-800 cursor-pointer">Dashboard</li></a>
+
+      <!-- Inventory -->
+      <a href="./inventory.html"><li class="bg-green-700 p-4 rounded-xl hover:bg-green-800 cursor-pointer mt-5">Inventory</li></a>
+
+      <!-- Expiry Management -->
+      <a href="./expiry.html"> <li class="bg-green-800 p-4 rounded-xl hover:bg-green-900 cursor-pointer mt-5">Expiry Management</li></a>
+</ul>
+
+  </div>
+
+ 
+<div class="flex-1 p-6">
+
+  <h1 class="text-3xl font-bold mb-6">Expiry Management</h1>
+
+  <!-- SUMMARY CARDS -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+
+    <div class="bg-red-500 text-white p-5 rounded-xl shadow">
+      <h2 class="text-lg font-bold">Expired Products</h2>
+      <p id="expiredCount" class="text-3xl mt-2">0</p>
+    </div>
+
+    <div class="bg-yellow-500 text-white p-5 rounded-xl shadow">
+      <h2 class="text-lg font-bold">Expiring Soon</h2>
+      <p id="expiringSoonCount" class="text-3xl mt-2">0</p>
+    </div>
+
+    <div class="bg-green-500 text-white p-5 rounded-xl shadow">
+      <h2 class="text-lg font-bold">Safe Products</h2>
+      <p id="safeCount" class="text-3xl mt-2">0</p>
+    </div>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="overflow-x-auto">
+
+    <table class="w-full bg-white border">
+
+      <thead class="bg-green-700 text-white">
+
+        <tr>
+          <th class="p-3">S.No</th>
+          <th>Product</th>
+          <th>Category</th>
+          <th>Expiry Date</th>
+          <th>Status</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="expiryTable"></tbody>
+
+    </table>
+
+  </div>
+
+</div>
+<script src="./Assets/js/expiry.js"></script>
+</body>
+</html>
