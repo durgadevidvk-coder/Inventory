@@ -166,7 +166,7 @@ function generateBillPDF() {
 
   // 🏪 HEADER
   doc.setFontSize(16);
-  doc.text("GROCERY SHOP INVOICE", 65, y);
+  doc.text("MSD GROCERY", 65, y);
 
   y += 8;
   doc.setFontSize(10);
